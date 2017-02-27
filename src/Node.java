@@ -90,7 +90,7 @@ public class Node {
         }
         currdegree++;
         elements.insertElementAt(num, i);
-        pointers.insertElementAt(newnode, i);
+        pointers.insertElementAt(newnode, i+1);
     }
     
 }

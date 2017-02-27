@@ -105,14 +105,15 @@ public class Tree {
            if(newtree!=null)
            {
                int hold =newtree.elements.get(0);
-               for(i=0;i<btree.currdegree;i++)
-               {
-                   if(hold<btree.elements.get(i))
-                       break;
-               }
-               btree.elements.add(i,hold);
-               btree.pointers.add(i+1,newtree);
-               btree.currdegree++;
+//               for(i=0;i<btree.currdegree;i++)
+//               {
+//                   if(hold<btree.elements.get(i))
+//                       break;
+//               }
+//               btree.elements.add(i,hold);
+//               btree.pointers.add(i+1,newtree);
+//               btree.currdegree++;
+               btree.addElement(newtree,hold);
                if(!newtree.isLeaf()){
                    newtree.elements.removeElementAt(0);
                    newtree.currdegree--;
