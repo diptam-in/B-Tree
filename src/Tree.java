@@ -29,7 +29,7 @@ public class Tree {
         
         while(true)
         {
-            System.out.println("\n\n1.Insert\n2.Display\n3.Exit\n");
+            System.out.println("\n\n1.Insert\n2.Display\n3.Find\n4.Exit\n");
             choice = Integer.parseInt(reader.readLine());
             
             switch(choice)
@@ -54,6 +54,13 @@ public class Tree {
                         }
                         break;
                 case 2: displayTree(btree); break;
+                case 3: System.out.println("Enter Element:\n");
+                        elem = Integer.parseInt(reader.readLine());
+                        if(isThere(btree,elem))
+                            System.out.println("YES\n");
+                        else
+                            System.out.println("NO\n");
+                        break;
                 default : System.exit(0);    
             }
         }
@@ -121,6 +128,21 @@ public class Tree {
            btree.currdegree = btree.maxdegree/2;
            return splittednode;
        }
+    }
+
+    private static boolean isThere(Node btree, int elem) {
+        Node curr = btree;
+        int i;
+        while(!curr.isLeaf())
+        {
+            for(i=0;i<curr.currdegree;i++)
+            {
+                if(elem < curr.elements.get(i))
+                    break;
+            }
+            curr = curr.pointers.get(i);
+        }
+        return curr.elements.contains(elem);
     }
     
 }
