@@ -33,7 +33,6 @@ public class Tree {
         
         while((inst=br.readLine())!=null)
         {
-
             switch(ch.getCommand(inst))
             {
                 case 1:
@@ -164,7 +163,7 @@ public class Tree {
         {
             for(i=0;i<curr.currdegree;i++)
             {
-                if(elem < curr.elements.get(i))
+                if(elem <= curr.elements.get(i))
                     break;
             }
             curr = curr.pointers.get(i);
@@ -172,31 +171,28 @@ public class Tree {
         return curr;
     }
 
-    private static String getRange(Node root,int elem, int elem2) {
-        if(!isThere(root,elem))
-            return "Element Does NOt exist";
-        else
-        {
+    private static int getRange(Node root,int elem, int elem2) {
            Node start = getNode(root,elem);
-           String res="Range:";
+           int res=0;
            int count=0;
            int temp = start.elements.get(count);
            while(temp<=elem2 || start.rightsibling!=null)
            {
                if(temp>=elem)
-                   res+=(" "+temp);
+                   res++;
                count++;
                if(count==start.currdegree)
                {
                    start = start.rightsibling;
                    count=0;
-               }
-               temp = start.elements.get(count);
+               }               
+               if(start==null)
+                   break;
+               temp = start.elements.get(count);               
                if(temp>elem2)
                    break;
            }          
            return res;
-        }
     }
     
     private static int getCount(Node root,int elem)
@@ -218,8 +214,9 @@ public class Tree {
                    start = start.rightsibling;
                    count=0;
                }
+               if(start==null)
+                   break;
                temp = start.elements.get(count);
-               System.out.print(temp+" ");
                if(temp>elem)
                    break;
            }
