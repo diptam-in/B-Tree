@@ -54,7 +54,15 @@ public class Node {
     
     String getAllElements()
     {
-        return elements.toString() + " " + "degree: "+ currdegree;
+        String s = elements.toString() + " " + "degree: "+ currdegree;
+        if(isLeaf())
+        {
+            if(rightsibling==null)
+                s+= " First of Next Node: " + "NIL";
+            else
+                s+= " First of Next Node: " + rightsibling.elements.get(0);
+        }
+        return s;
     }
     
     Vector<Node> getAllPointers()

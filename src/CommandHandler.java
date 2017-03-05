@@ -20,7 +20,11 @@ public class CommandHandler {
             return 2;
         if(arr[0].equalsIgnoreCase("find"))
             return 3;
-        return 4;
+        if(arr[0].equalsIgnoreCase("range"))
+            return 4;
+        if(arr[0].equalsIgnoreCase("count"))
+            return 5;
+        return 6;
     }
     
     int getFirstOperand()
